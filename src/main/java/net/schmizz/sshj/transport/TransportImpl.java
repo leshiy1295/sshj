@@ -270,6 +270,10 @@ public final class TransportImpl
 
     @Override
     public int getTimeoutMs() {
+        String overridenTimeoutMs = System.getenv().get("SSHJ_CONNECTION_TIMEOUT_MS");
+        if (overridenTimeoutMs != null) {
+            return Integer.valueOf(overridenTimeoutMs) * 1000;
+        }
         return timeoutMs;
     }
 
