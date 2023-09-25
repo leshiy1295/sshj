@@ -270,12 +270,14 @@ nexusPublishing {
 	clientTimeout = Duration.ofMinutes(3)
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-}
+// When uncommented, the following error occures with linking source code to another project:
+// Could not find method enabled() for arguments [true] on Report xml of type org.gradle.api.reporting.internal.TaskGeneratedSingleFileReport
+// jacocoTestReport {
+//     reports {
+//         xml.enabled true
+//         html.enabled true
+//     }
+// }
 
 task forkedUploadRelease(type: GradleBuild) {
   buildFile = project.buildFile
